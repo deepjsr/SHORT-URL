@@ -13,9 +13,11 @@ async function handelGenerateNewShortURL(req,res){
 
     })
 
-    return res.json({id:shortId})
-
+    return res.render("home",{
+        id:shortId
+    });
 }
+
 async function handelGetAnalytics(req,res) {
     const shortId=req.params.shortId;
     const result= await URL.findOne({shortId});
