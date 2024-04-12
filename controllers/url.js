@@ -13,9 +13,7 @@ async function handelGenerateNewShortURL(req,res){
 
     })
 
-    return res.render("home",{
-        id:shortId
-    });
+    return res.render("HomePage");
 }
 
 async function handelGetAnalytics(req,res) {

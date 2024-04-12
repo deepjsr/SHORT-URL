@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <head>
+    <style>
+      body {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node-front-end</title>
+  </head>
+  <body>
+    <h1>URL Shortner</h1>
+    <!-- <%   if (locals.id) { %>
+            <p>URL Generated : http://loaclhost:8001/url/<%= id %></p>
+            <% } %> 
+           -->
+    <div>
+      <form method="POST" action="/url">
+        <label for="">Enter Your Original URL</label>
+        <input type="text" placeholder="https://example.com" name="url" />
+        <button type="submit">Generate</button>
+      </form>
+    </div>
+    <div>
+      <% if (locals.urls) { %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">S.No</th>
+            <th scope="col">ShortId</th>
+            <th scope="col">Redirect</th>
+            <th scope="col">Clicks</th>
+          </thead>
+        </tr>
+        <tbody>
+          <% urls.forEach((url,index) => {%>
+          <tr>
+            <th scope="row"><%= index+1 %></th>
+            <td><%= url.shortId %></td>
+            <td><%= url.redirectURL %></td>
+            <td><%= url.visitHistory.length %></td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+  </body>
+</html>
