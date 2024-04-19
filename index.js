@@ -5,7 +5,7 @@ const path = require("path");
 const { connecToMonGoDb } = require("./connection");
 
 const { handelGenerateNewShortURL } = require("./controllers/url");
-const{restrictToLogedinUserOnly, checkAuth}=require("./middlewares/auth")
+const{checkForAuthentication, restrictTo}=require("./middlewares/auth")
 const cookieParser=require('cookie-parser');
 
 const urlRoute = require("./routes/url");
@@ -28,10 +28,10 @@ app.use(cookieParser());
 
 
 
-app.use("/url",restrictToLogedinUserOnly, urlRoute);
+app.use("/url",restrictTo(["NORMAL","ADMIN"]), urlRoute);
 app.use("/user", userRoutes);
-app.use("/",checkAuth, staticRoute);
-
+app.use("/", staticRoute);
+app.use(checkForAuthentication);
 
 app.get("/url/:shortid", async (req, res) => {
   const shortId = req.params.shortid;

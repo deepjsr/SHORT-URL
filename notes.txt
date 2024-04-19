@@ -1,0 +1,4 @@
+Cookie:
+    1. It is domain specific 
+    2. It has expire data (reff:https://expressjs.com/en/4x/api.html#req.cookies)
+    3. 
